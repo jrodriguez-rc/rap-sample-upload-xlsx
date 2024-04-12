@@ -1,0 +1,117 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Root',
+    typeNamePlural: 'Roots',
+    title: {
+        value: 'Title',
+        type: #STANDARD
+    },
+    description: {
+        label: 'Root entity',
+        type: #STANDARD,
+        value: 'UUID'
+    }
+  }
+}
+
+annotate view ZRAP_C_XLSXU_Root with
+{
+
+  @UI.facet: [ {
+      id: 'ZRAP_C_XLSXU_Root',
+      purpose: #STANDARD,
+      type: #COLLECTION,
+      label: 'Main'
+    },
+    {
+      id: 'ZRAP_C_XLSXU_Root-Header',
+      purpose: #STANDARD,
+      type: #COLLECTION,
+      label: 'Header data',
+      parentId: 'ZRAP_C_XLSXU_Root'
+    },
+    {
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Header',
+      parentId: 'ZRAP_C_XLSXU_Root-Header'
+    },
+    {
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Upload',
+      parentId: 'ZRAP_C_XLSXU_Root-Header',
+      hidden: #( IsActiveEntity )
+    },
+    {
+      id: 'ZRAP_C_XLSXU_Root-Change',
+      purpose: #STANDARD,
+      type: #COLLECTION,
+      label: 'Change data',
+      parentId: 'ZRAP_C_XLSXU_Root'
+    },
+    {
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Changelog',
+      label: 'Changelog',
+      parentId: 'ZRAP_C_XLSXU_Root-Change'
+    },
+    {
+      purpose: #STANDARD,
+      id: 'ZRAP_C_XLSXU_Child',
+      type: #LINEITEM_REFERENCE,
+      label: 'Childs',
+      targetElement: '_Child'
+    } ]
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Header',
+    position: 10,
+    label: 'Title'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 ,
+    importance: #MEDIUM,
+    label: 'Title'
+  } ]
+  Title;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Upload',
+    position: 10
+  } ]
+  StreamFile;
+
+  @UI.hidden: true
+  StreamFilename;
+
+  @UI.hidden: true
+  StreamMimetype;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Changelog',
+    position: 10
+  } ]
+  CreatedBy;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Changelog',
+    position: 20
+  } ]
+  CreatedAt;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Changelog',
+    position: 30
+  } ]
+  LastChangedBy;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Changelog',
+    position: 40
+  } ]
+  LastChangedAt;
+
+  @UI.hidden: true
+  EtagMaster;
+
+}

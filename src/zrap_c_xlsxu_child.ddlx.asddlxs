@@ -1,0 +1,104 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Child',
+    typeNamePlural: 'Childs',
+    title: {
+        value: 'Subject',
+        type: #STANDARD
+    },
+    description: {
+        label: 'Child entity',
+        type: #STANDARD,
+        value: 'UUID'
+    }
+  }
+}
+
+annotate view ZRAP_C_XLSXU_Child with
+{
+
+  @UI.facet: [ {
+      id: 'ZRAP_C_XLSXU_Child',
+      purpose: #STANDARD,
+      type: #COLLECTION,
+      label: 'Main'
+    },
+    {
+      id: 'ZRAP_C_XLSXU_Child-Header',
+      purpose: #STANDARD,
+      type: #COLLECTION,
+      label: 'Header data',
+      parentId: 'ZRAP_C_XLSXU_Child'
+    },
+    {
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Header',
+      parentId: 'ZRAP_C_XLSXU_Child-Header'
+    },
+    {
+      id: 'ZRAP_C_XLSXU_Child-Change',
+      purpose: #STANDARD,
+      type: #COLLECTION,
+      label: 'Change data',
+      parentId: 'ZRAP_C_XLSXU_Child'
+    },
+    {
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Changelog',
+      label: 'Changelog',
+      parentId: 'ZRAP_C_XLSXU_Child-Change'
+    } ]
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Header',
+    position: 10,
+    label: 'Subject'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 ,
+    importance: #MEDIUM,
+    label: 'Subject'
+  } ]
+  Subject;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Header',
+    position: 20,
+    label: 'Amount'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 ,
+    importance: #MEDIUM,
+    label: 'Amount'
+  } ]
+  Amount;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Changelog',
+    position: 10
+  } ]
+  CreatedBy;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Changelog',
+    position: 20
+  } ]
+  CreatedAt;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Changelog',
+    position: 30
+  } ]
+  LastChangedBy;
+
+  @UI.fieldGroup: [ {
+    qualifier: 'Changelog',
+    position: 40
+  } ]
+  LastChangedAt;
+
+  @UI.hidden: true
+  EtagMaster;
+
+}

@@ -1,0 +1,7 @@
+CLASS zrap_bp_c_xlsxu DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zrap_c_xlsxu_root.
+ENDCLASS.
+
+
+
+CLASS zrap_bp_c_xlsxu IMPLEMENTATION.
+ENDCLASS.

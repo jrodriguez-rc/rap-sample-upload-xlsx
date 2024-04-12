@@ -1,0 +1,41 @@
+projection implementation in class ZRAP_BP_C_XLSXU unique;
+strict ( 2 );
+use draft;
+use side effects;
+
+define behavior for ZRAP_C_XLSXU_Root alias Root
+use etag
+
+{
+
+  use create;
+  use update ( augment );
+  use delete;
+
+  field ( modify )
+  StreamFilename,
+  StreamMimetype,
+  StreamFile;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _Child { create; with draft; }
+
+  side effects { field StreamFile affects entity _Child; }
+
+}
+
+define behavior for ZRAP_C_XLSXU_Child alias Child
+
+{
+
+  use update;
+  use delete;
+
+  use association _Root { with draft; }
+
+}

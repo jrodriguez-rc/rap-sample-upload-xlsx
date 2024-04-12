@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service definition for ZRAP_C_XLSXU_ROOT'
+define service ZRAP_UI_XLSXU_O4 {
+  expose ZRAP_C_XLSXU_Root  as Root;
+  expose ZRAP_C_XLSXU_Child as Child;
+}
